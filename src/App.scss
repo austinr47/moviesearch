@@ -29,6 +29,15 @@ body {
     width: 100%;
     align-items: center;
 
+    .logo {
+      width: 200px;
+      height: 30px;
+    }
+
+    img {
+      width: 15px;
+    }
+
     span {
       width: 100%;
       text-align: center;
@@ -153,13 +162,11 @@ body {
 // youtube player
 .player-main {
   z-index: 1110;
-  // position: fixed;
   width: 550px;
-  height: 400px;
+  height: 350px;
   background-color: black;
-  // background-color: red;
-  // background-image: url("paper.gif");
-  // padding: 30px 80px;
+  max-width: 96vw;
+  max-height: 96vh;
   border-radius: 7px;
   text-align: center;
   display: flex;
@@ -168,7 +175,6 @@ body {
   position: relative;
   
   button {
-    // display: none;
     position: absolute;
     bottom: 10px;
     left: 10px;
@@ -178,12 +184,11 @@ body {
     border: none;
   }
   iframe {
-    padding: 5px;
-    // background-color: green;
     width: 500px;
-    height: 350px;
+    height: 300px;
+    max-width: 95vw;
+    max-height: 95vh;
     margin-bottom: 5px;
-    margin-left: 5px;
   }
 }
 
@@ -191,6 +196,10 @@ body {
   .main {
 
     .navbar {
+
+      img {
+        width: 25px;
+      }
   
       span {
         font-size: 35px;
@@ -200,6 +209,13 @@ body {
     .indi-movie {
       // max-width: 140px;
       width: 31%;
+    }
+  }
+
+  .player-main {
+    height: 430px;
+    iframe {
+      height: 350px;
     }
   }
 

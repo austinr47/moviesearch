@@ -17,10 +17,12 @@ export default class Trailer extends Component {
     this.getId(title, year)
   }
   
+  // need this for when the props change so that it continues to show correct trailer
   componentWillReceiveProps(nextProps) {
     this.getId(nextProps.title, nextProps.year)
   }
 
+  // method to get the movieID and setting it to state
   getId(title, year) {
     //using the google youtube api to get the video id
     let youtube = (params, callback) => {
@@ -39,6 +41,7 @@ export default class Trailer extends Component {
     })
   }
 
+  // method to close the pop up window
   close() {
     this.props.close()
   }

@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import pict from './play.png';
 import Trailer from './Trailer';
+import header from './header.png'
 
 class App extends Component {
   constructor() {
@@ -17,6 +18,7 @@ class App extends Component {
       trailerTitle: '',
       search: 'Search Movie Titles'
     }
+    // this is only binding needed since the arrow function binds the other methods in ES6
     this.searchingMovies = this.searchingMovies.bind(this)
   }
 
@@ -68,6 +70,7 @@ class App extends Component {
     })
   }
 
+  // method search on click
   searchingMovies(title, page) {
     this.getMovies(title, page)
     this.setState({
@@ -75,6 +78,7 @@ class App extends Component {
     })
   }
 
+  // method to allow enter key in search
   searchingMoviesEnter(event, title, page) {
     if(event.key === 'Enter'){
       this.getMovies(title, page)
@@ -84,6 +88,7 @@ class App extends Component {
     }
   }
 
+  // method to clear search on focus
   handleFocus() {
     this.setState({
       search: ''
@@ -91,11 +96,12 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.state)
+    // destructuring state
     const{details} = this.state
 
     //mapping over movies and displaying information
     let movieDetails = details.map((item, index) => {
+      // some results in the api was invalid so this 'if' is to make sure it is a valid movie and not N/A
       if(item.Title) {
         return <div key={item.imdbID + index} className='indi-movie'>
           <div onClick={() => this.playTrailer(item.Title, item.Year)} className='picture'>
@@ -124,7 +130,6 @@ class App extends Component {
       } else return null
     })
 
-    console.log(this.state.search)
     return (
       <div className='main'>
         {/* to display youtube player component */}
@@ -134,11 +139,14 @@ class App extends Component {
           </div>
         }
 
+
+        {/* navbar */}
         <nav className='navbar'>
-          <span>MovieGuide</span>
+          <span><img alt='movie icon' src='https://upload.wikimedia.org/wikipedia/commons/6/68/OldCamera_icon.svg' /> <img alt='logo' src={header} className='logo'/> </span>
         </nav>
 
 
+        {/* search and display movies */}
         <div className='content'>
           <input onKeyPress={(event) => this.searchingMoviesEnter(event, this.state.title, this.state.page)} onFocus={() => this.handleFocus()} onChange={event => this.setState({title: event.target.value, search: event.target.value})} className='search form-control' value={this.state.search} placeholder={this.state.search}/> 
           <button className='btn btn-light' onClick={() => this.searchingMovies(this.state.title, this.state.page)}>Submit</button>
@@ -148,6 +156,7 @@ class App extends Component {
         </div>
 
 
+        {/* footer */}
         <footer className='footer'>
           <span>footer</span>
         </footer>
