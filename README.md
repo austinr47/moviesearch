@@ -1,6 +1,5 @@
 ## MovieGuide
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 This is a web application to search movies by title, get movie details, and watch a trailer of the movie.
 
